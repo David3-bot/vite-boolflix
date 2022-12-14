@@ -1,16 +1,24 @@
 <script>
 import { storage } from "../storage"
+export default {
+    data() {
+        return {
+            storage,
+        }
+    },
+}
 </script>
 
 <template>
     <div class="container">
-        <div class=" py-5">
+        <div class="py-5">
             <div class="row d-flex g-4">
                 <div class="col-3">
-                    <div class="card">
-                        
+                    <div class="card" v-for="card in storage.moviesList">
+
                         <div class="card-body">
-                            <h5 class="card-title"></h5>
+                            <img class="card-img-top position-relative"
+                                :src="storage.img.link + storage.img.size + card.poster_path" alt="" />
                             <p class="card-text"></p>
                             <p class="card-text"></p>
                             <p class="card-text"></p>
@@ -22,4 +30,6 @@ import { storage } from "../storage"
     </div>
 </template>
 
-<style></style>
+<style>
+
+</style>
