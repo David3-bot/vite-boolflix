@@ -11,10 +11,11 @@ export default {
 
 <template>
     <div class="container">
-        <div class="row"> film
-            <div class="col-4">
+        <h1>Film</h1>
+        <div class="row">
+            <div class="col-3" v-for="card in storage.moviesList">
                 <div class="card-container">
-                    <div class="card" v-for="card in storage.moviesList">
+                    <div class="card">
                         <div class="card-body text-center">
                             <p class="card-text"> {{card.title}} </p>
                             <img class="card-img-top"
@@ -27,10 +28,11 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="row"> serie
-            <div class="col-4">
+        <h1>Serie</h1>
+        <div class="row">
+            <div class="col-3" v-for="card in storage.serialList">
                 <div class="card-container">
-                    <div class="card" v-for="card in storage.serialList">
+                    <div class="card">
                         <div class="card-body text-center">
                             <p class="card-text"> {{card.title}} </p>
                             <img class="card-img-top"
