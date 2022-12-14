@@ -1,22 +1,24 @@
 
 import { pushScopeId, reactive } from "vue";
 import axios from "axios";
-//import { isFunctionType } from "@vue/compiler-core";
+
 
 
 export const storage = reactive({
     moviesList: [],
+    serialList: [],
     research: "",
+    url: "https://api.themoviedb.org/3",
     img: {
         link: "https://image.tmdb.org/t/p/",
-        size: "w92",
+        size: "w342",
     },
 });
 
 export function fetchMovies() {
-    const rootUrl = "https://api.themoviedb.org/3"
 
-    axios.get(rootUrl + "/search/movie/", {
+
+    axios.get(storage.url + "/search/movie/", {
         params: {
             api_key: "d5eacbe92f413e5720644cbaa74aa72a",
             query: storage.research,
@@ -28,20 +30,25 @@ export function fetchMovies() {
             storage.moviesList = resp.data.results
         });
 
-    axios.get(rootUrl + "/search/TV/", {
-        params: {
-            api_key: "d5eacbe92f413e5720644cbaa74aa72a",
-            query: storage.research,
-        },
 
-    })
-        .then(resp => {
-            console.log(resp.data.results)
-            storage.moviesList = resp.data.results
-        });
 }
 
+export function fetchSeries() {
 
+
+    axios.get(storage.url + "/search/tv/", {
+        params: {
+            api_key: "d5eacbe92f413e5720644cbaa74aa72a",
+            query: storage.research,
+        },
+
+    })
+        .then(resp => {
+            console.log(resp.data.results)
+            storage.serialList = resp.data.results
+        });
+
+}
 
 
 
